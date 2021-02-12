@@ -1,0 +1,196 @@
+{
+  "format": 1,
+  "restore": {
+    "/home/jan/RiderProjects/Shop/Shop.Application/Shop.Application.csproj": {}
+  },
+  "projects": {
+    "/home/jan/RiderProjects/Shop/Shop.Application/Shop.Application.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/home/jan/RiderProjects/Shop/Shop.Application/Shop.Application.csproj",
+        "projectName": "Shop.Application",
+        "projectPath": "/home/jan/RiderProjects/Shop/Shop.Application/Shop.Application.csproj",
+        "packagesPath": "/home/jan/.nuget/packages/",
+        "outputPath": "/home/jan/RiderProjects/Shop/Shop.Application/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/home/jan/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net5.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net5.0": {
+            "targetAlias": "net5.0",
+            "projectReferences": {
+              "/home/jan/RiderProjects/Shop/Shop.Database/Shop.Database.csproj": {
+                "projectPath": "/home/jan/RiderProjects/Shop/Shop.Database/Shop.Database.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net5.0": {
+          "targetAlias": "net5.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/5.0.103/RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "/home/jan/RiderProjects/Shop/Shop.Database/Shop.Database.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/home/jan/RiderProjects/Shop/Shop.Database/Shop.Database.csproj",
+        "projectName": "Shop.Database",
+        "projectPath": "/home/jan/RiderProjects/Shop/Shop.Database/Shop.Database.csproj",
+        "packagesPath": "/home/jan/.nuget/packages/",
+        "outputPath": "/home/jan/RiderProjects/Shop/Shop.Database/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/home/jan/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net5.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net5.0": {
+            "targetAlias": "net5.0",
+            "projectReferences": {
+              "/home/jan/RiderProjects/Shop/Shop.Domain/Shop.Domain.csproj": {
+                "projectPath": "/home/jan/RiderProjects/Shop/Shop.Domain/Shop.Domain.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net5.0": {
+          "targetAlias": "net5.0",
+          "dependencies": {
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[5.0.3, )"
+            },
+            "Microsoft.EntityFrameworkCore.Design": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[5.0.3, )"
+            },
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[5.0.3, )"
+            },
+            "MySql.Data.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[8.0.22, )"
+            },
+            "MySql.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[5.0.0-m8.0.23, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/5.0.103/RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "/home/jan/RiderProjects/Shop/Shop.Domain/Shop.Domain.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/home/jan/RiderProjects/Shop/Shop.Domain/Shop.Domain.csproj",
+        "projectName": "Shop.Domain",
+        "projectPath": "/home/jan/RiderProjects/Shop/Shop.Domain/Shop.Domain.csproj",
+        "packagesPath": "/home/jan/.nuget/packages/",
+        "outputPath": "/home/jan/RiderProjects/Shop/Shop.Domain/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/home/jan/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net5.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net5.0": {
+            "targetAlias": "net5.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net5.0": {
+          "targetAlias": "net5.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/5.0.103/RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}

@@ -1,10 +1,29 @@
 ﻿@page
 @model IndexModel
 @{
-    ViewData["Title"] = "Home page";
+    ViewData["Title"] = "Save product";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<form method="post">
+    <label>Name</label>
+    <input type="text" asp-for="Product.Name">
+    <label>Description</label>
+    <input type="text" asp-for="Product.Description">
+    <label>Price</label>
+    <input type="text" asp-for="Product.Price">
+    <label>Weight</label>
+    <input type="text" asp-for="Product.Weight">
+    <label>Qty</label>
+    <input type="number" asp-for="Product.Qty">
+    
+    <input type="submit" value="submit">
+</form>
+
+<div>
+    @foreach (var p in Model.Products)
+    {
+        <p>
+            @p.Name - @p.Description - @p.Price - @p.Qty - @p.Weight
+        </p>
+    }
 </div>

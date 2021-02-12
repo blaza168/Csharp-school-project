@@ -1,3 +1,6 @@
+using System.Collections;
+using System.Collections.Generic;
+
 namespace Shop.Domain.Models
 {
     public class Producer
@@ -7,6 +10,9 @@ namespace Shop.Domain.Models
         public string Country { get; set; }
 
         // attachment logo
-        // product list
+        public int AttachmentId { get; set; }
+        public Attachment Attachment { get; set; }
+        
+        public ICollection<Product> Products { get; set; }
     }
 }

@@ -1,3 +1,5 @@
+using System.Collections;
+using System.Collections.Generic;
 using System.Data;
 
 namespace Shop.Domain.Models
@@ -11,10 +13,18 @@ namespace Shop.Domain.Models
         public decimal Weight { get; set; }
         public int Qty { get; set; }
         
-        
-        // public decimal Rating { get; set; }
         // producer
+        public int ProducerId { get; set; }
+        public Producer Producer { get; set; }
+        
         // category
+        public int CategoryId { get; set; }
+        public Category Category { get; set; }
+        
         // attachment
+        public int? AttachmentId { get; set; }
+        public virtual Attachment Attachment { get; set; }
+        
+        public ICollection<Rating> Ratings { get; set; }
     }
 }

@@ -8,6 +8,7 @@ namespace Shop.Domain.Models
         public decimal NumericRating { get; set; }
         public string Description { get; set; }
         
-        // product
+        public int ProductId { get; set; }
+        public Product Product { get; set; }
     }
 }

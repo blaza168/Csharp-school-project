@@ -3,15 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
-using Microsoft.EntityFrameworkCore;
 using Shop.Domain.Models;
 
-namespace Shop.Database
+namespace Shop.Database.Repositories
 {
     public class ProductRepository
     {
-        // There is so many filtering options in task, why dont use one filtering function with expression argument ? Cuz that wont be a ladder
-        
         private readonly ApplicationDbContext _context;
 
         public ProductRepository(ApplicationDbContext context)
@@ -19,9 +16,11 @@ namespace Shop.Database
             _context = context;
         }
 
-        public IEnumerable<Product> GetProducts()
+        public IEnumerable<TResult> GetProducts<TResult>(Expression<Func<Product, TResult>> selector)
         {
-            return _context.Products.ToList();
+            return _context.Products
+                .Select(selector)
+                .ToList();
         }
 
         public Task<int> CreateProduct(Product product)
@@ -50,10 +49,10 @@ namespace Shop.Database
             return _context.SaveChangesAsync();
         }
 
-        public IEnumerable<TResult> GetProductsByIds<TResult>(IEnumerable<int> ids, Expression<Func<Product, TResult>> selector)
+        public IEnumerable<TResult> GetProducts<TResult>(Func<Product, bool> condition, Expression<Func<Product, TResult>> selector)
         {
             return _context.Products
-                .Where(x => ids.Contains(x.Id))
+                .Where(x => condition(x))
                 .Select(selector)
                 .ToList();
         }
@@ -66,16 +65,8 @@ namespace Shop.Database
                 .FirstOrDefault();
         }
 
-        public IEnumerable<TResult> GetProductsByCategory<TResult>(int categoryId, Expression<Func<Product, TResult>> selector)
-        {
-            return _context.Products
-                .Where(x => x.CategoryId == categoryId)
-                .Select(selector)
-                .ToList();
-        }
-        
         // Price doesnt have maximum value. Use null if dont wanna specify
-        public IEnumerable<TResult> GetProductsByPrice<TResult>(int minPrice, int? maxPrice, Expression<Func<Product, TResult>> selector)
+        public IEnumerable<TResult> GetProductsByPrice<TResult>(decimal? minPrice, decimal? maxPrice, Expression<Func<Product, TResult>> selector)
         {
             IQueryable<Product> query = _context.Products
                 .Where(x => minPrice <= x.Price);
@@ -86,14 +77,6 @@ namespace Shop.Database
             }
 
             return query.Select(selector).ToList();
-        }
-
-        public IEnumerable<TResult> GetProductsByProducer<TResult>(int producerId, Expression<Func<Product, TResult>> selector)
-        {
-            return _context.Products
-                .Where(x => x.ProducerId == producerId)
-                .Select(selector)
-                .ToList();
         }
 
         public IEnumerable<TResult> GetProductsByQuantity<TResult>(int minQuantity, int? maxQuantity, Expression<Func<Product, TResult>> selector)
@@ -108,11 +91,16 @@ namespace Shop.Database
 
             return query.Select(selector).ToList();
         }
-        
-        // expressions
-        
-        public IEnumerable<TResult> GetProductsByPrice<TResult>(int minPrice,
-            Expression<Func<Product, TResult>> selector) =>
-            GetProductsByPrice(minPrice, null, selector);
+
+        public IEnumerable<TResult> GetProductsByPrice<TResult>(int minPrice, Expression<Func<Product, TResult>> selector)
+        {
+            return GetProductsByPrice(minPrice, null, selector);
+        }
+
+        public IEnumerable<TResult> GetProductsByQuantity<TResult>(int minQuantity,
+            Expression<Func<Product, TResult>> selector)
+        {
+            return GetProductsByQuantity(minQuantity, null, selector);
+        }
     }
 }

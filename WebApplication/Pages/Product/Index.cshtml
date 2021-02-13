@@ -1,0 +1,17 @@
+@page
+@model WebApplication.Pages.Product.Index
+
+@{
+    ViewData["Title"] = "List Products";
+    Layout = "Shared/_Layout";
+}
+
+<h1>List produktu</h1>
+<div>
+    @foreach (var p in Model.products)
+    {
+        <p>
+            <a href="/Product/Detail/@p.Id">@p.Name</a> - @p.Description - @p.Price - @p.Qty - @p.Weight
+        </p>
+    }
+</div>

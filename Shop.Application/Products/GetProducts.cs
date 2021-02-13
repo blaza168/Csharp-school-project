@@ -1,34 +1,30 @@
 using System.Collections.Generic;
 using System.Linq;
+using Shop.Application.Products.ViewModels;
 using Shop.Database;
+using Shop.Database.Repositories;
 
 namespace Shop.Application.Products
 {
     public class GetProducts
     {
-        private readonly ApplicationDbContext _context;
+        private readonly ProductRepository _productRepository;
 
-        public GetProducts(ApplicationDbContext context)
+        public GetProducts(ProductRepository productRepository)
         {
-            _context = context;
+            _productRepository = productRepository;
         }
 
-        public IEnumerable<ProductViewModel> Do() =>_context.Products.ToList().Select(x => new ProductViewModel
-            {
+        public IEnumerable<ProductViewModel> Do()
+        {
+            return _productRepository.GetProducts(x => new ProductViewModel {
+                Id = x.Id,
                 Name = x.Name,
                 Description = x.Description,
                 Price = $"$ {x.Price:N2}",
                 Weight = x.Weight,
                 Qty = x.Qty,
             });
-    }
-    
-    public class ProductViewModel
-    {
-        public string Name { get; set; }
-        public string Description { get; set; }
-        public string Price { get; set; }
-        public decimal Weight { get; set; }
-        public int Qty { get; set; }
+        }
     }
 }

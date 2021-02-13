@@ -22,8 +22,8 @@ namespace Shop.Domain.Models
         public Category Category { get; set; }
         
         // attachment
-        public int? AttachmentId { get; set; }
-        public virtual Attachment Attachment { get; set; }
+        public int? FileId { get; set; }
+        public virtual File File { get; set; }
         
         public ICollection<Rating> Ratings { get; set; }
     }

@@ -4,20 +4,20 @@
     ViewData["Title"] = "Save product";
 }
 
-<form method="post">
-    <label>Name</label>
-    <input type="text" asp-for="Product.Name">
-    <label>Description</label>
-    <input type="text" asp-for="Product.Description">
-    <label>Price</label>
-    <input type="text" asp-for="Product.Price">
-    <label>Weight</label>
-    <input type="text" asp-for="Product.Weight">
-    <label>Qty</label>
-    <input type="number" asp-for="Product.Qty">
-    
-    <input type="submit" value="submit">
-</form>
+@* <form method="post"> *@
+@*     <label>Name</label> *@
+@*     <input type="text" asp-for="Product.Name"> *@
+@*     <label>Description</label> *@
+@*     <input type="text" asp-for="Product.Description"> *@
+@*     <label>Price</label> *@
+@*     <input type="text" asp-for="Product.Price"> *@
+@*     <label>Weight</label> *@
+@*     <input type="text" asp-for="Product.Weight"> *@
+@*     <label>Qty</label> *@
+@*     <input type="number" asp-for="Product.Qty"> *@
+@*      *@
+@*     <input type="submit" value="submit"> *@
+@* </form> *@
 
 <div>
     @foreach (var p in Model.Products)

@@ -1,39 +1,33 @@
 using System.Threading.Tasks;
+using Shop.Application.Products.Requests;
+using Shop.Application.Products.ViewModels;
 using Shop.Database;
+using Shop.Database.Repositories;
 using Shop.Domain.Models;
 
-namespace Shop.Application.Products.Create
+namespace Shop.Application.Products
 {
     public class CreateProduct
     {
-        private ApplicationDbContext _context;
+        private readonly ProductRepository _productRepository;
 
-        public CreateProduct(ApplicationDbContext context)
+        public CreateProduct(ProductRepository productRepository)
         {
-            _context = context;
+            _productRepository = productRepository;
         }
 
-        public async Task Do(CreateProductViewModel viewModel)
+        public async Task<int> Do(CreateProductRequest request)
         {
-            _context.Products.Add(new Product
+            return await _productRepository.CreateProduct(new Product
             {
-                Name = viewModel.Name,
-                Description = viewModel.Description,
-                Price = viewModel.Price,
-                Weight = viewModel.Weight,
-                Qty = viewModel.Qty,
+                Name = request.Name,
+                Description = request.Description,
+                Price = request.Price,
+                Weight = request.Weight,
+                Qty = request.Qty,
+                ProducerId = request.ProducerId,
+                FileId = request.FileId,
             });
-            await _context.SaveChangesAsync();
         }
-    }
-    
-    public class CreateProductViewModel
-    {
-        public int Id { get; set; }
-        public string Name { get; set; }
-        public string Description { get; set; }
-        public decimal Price { get; set; }
-        public decimal Weight { get; set; }
-        public int Qty { get; set; }
     }
 }

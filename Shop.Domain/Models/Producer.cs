@@ -10,8 +10,8 @@ namespace Shop.Domain.Models
         public string Country { get; set; }
 
         // attachment logo
-        public int AttachmentId { get; set; }
-        public Attachment Attachment { get; set; }
+        public int FileId { get; set; }
+        public File File { get; set; }
         
         public ICollection<Product> Products { get; set; }
     }

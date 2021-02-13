@@ -10,7 +10,7 @@ namespace Shop.Database
     public class ApplicationDbContext : DbContext
     {
         public DbSet<Product> Products { get; set; }
-        public DbSet<Attachment> Attachments { get; set; }
+        public DbSet<File> Files { get; set; }
         public DbSet<Category> Categories { get; set; }
         public DbSet<Rating> Ratings { get; set; }
         public DbSet<Producer> Producers { get; set; }
@@ -36,14 +36,20 @@ namespace Shop.Database
                 .HasForeignKey(p => p.ProducerId)
                 .OnDelete(DeleteBehavior.NoAction); // Cascade this manually, EF forced me to NoAction
 
-            modelBuilder.Entity<Product>().HasOne(p => p.Attachment)
-                .WithOne(a => a.Product)
-                .HasForeignKey<Product>(p => p.AttachmentId)
+            modelBuilder.Entity<Product>().HasOne(p => p.File)
+                .WithOne(f => f.Product)
+                .HasForeignKey<Product>(p => p.FileId)
                 .OnDelete(DeleteBehavior.SetNull);
 
             modelBuilder.Entity<Product>().HasOne(p => p.Category)
                 .WithMany(c => c.Producets)
                 .HasForeignKey(p => p.CategoryId)
+                .OnDelete(DeleteBehavior.Cascade);
+            
+            // Producer
+            modelBuilder.Entity<Producer>().HasOne(p => p.File)
+                .WithOne(f => f.Producer)
+                .HasForeignKey<Producer>(p => p.FileId)
                 .OnDelete(DeleteBehavior.Cascade);
         }
     }

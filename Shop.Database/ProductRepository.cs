@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
+using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using Shop.Domain.Models;
 
@@ -21,6 +22,32 @@ namespace Shop.Database
         public IEnumerable<Product> GetProducts()
         {
             return _context.Products.ToList();
+        }
+
+        public Task<int> CreateProduct(Product product)
+        {
+            _context.Products.Add(product);
+
+            return _context.SaveChangesAsync();
+        }
+
+        public Task<int> UpdateProduct(Product product)
+        {
+            _context.Products.Update(product);
+
+            return _context.SaveChangesAsync();
+        }
+
+        public Task<int> DeleteProduct(int id)
+        {
+            Product product = _context.Products.FirstOrDefault(x => x.Id == id);
+            
+            if (product == null)
+                return null; // or throw exception
+            
+            _context.Products.Remove(product);
+
+            return _context.SaveChangesAsync();
         }
 
         public IEnumerable<TResult> GetProductsByIds<TResult>(IEnumerable<int> ids, Expression<Func<Product, TResult>> selector)

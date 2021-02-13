@@ -1,3 +1,7 @@
+using System;
+using System.Linq.Expressions;
+using Shop.Domain.Models;
+
 namespace Shop.Application.Products.ViewModels
 {
     public class ProductViewModel

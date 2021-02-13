@@ -17,14 +17,7 @@ namespace Shop.Application.Products
 
         public IEnumerable<ProductViewModel> Do()
         {
-            return _productRepository.GetProducts(x => new ProductViewModel {
-                Id = x.Id,
-                Name = x.Name,
-                Description = x.Description,
-                Price = $"$ {x.Price:N2}",
-                Weight = x.Weight,
-                Qty = x.Qty,
-            });
+            return _productRepository.GetProducts(GetProduct.ProductMapper);
         }
     }
 }

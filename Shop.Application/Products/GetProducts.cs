@@ -6,6 +6,7 @@ using Shop.Database.Repositories;
 
 namespace Shop.Application.Products
 {
+    [Service]
     public class GetProducts
     {
         private readonly ProductRepository _productRepository;

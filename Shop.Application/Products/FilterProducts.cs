@@ -9,6 +9,7 @@ using Shop.Domain.Models;
 
 namespace Shop.Application.Products
 {
+    [Service]
     public class FilterProducts
     {
         private static readonly Expression<Func<Product, ProductViewModel>> ModelMapper = p =>

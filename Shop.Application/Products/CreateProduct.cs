@@ -7,6 +7,7 @@ using Shop.Domain.Models;
 
 namespace Shop.Application.Products
 {
+    [Service]
     public class CreateProduct
     {
         private readonly ProductRepository _productRepository;

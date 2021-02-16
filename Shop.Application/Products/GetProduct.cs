@@ -6,6 +6,7 @@ using Shop.Domain.Models;
 
 namespace Shop.Application.Products
 {
+    [Service]
     public class GetProduct
     {
         public static readonly Expression<Func<Product, ProductViewModel>> ProductMapper = x => new ProductViewModel

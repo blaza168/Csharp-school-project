@@ -1,3 +1,4 @@
+using System;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Shop.Application.Producer;
@@ -23,6 +24,19 @@ namespace WebApplication.Controllers
         public IActionResult ListProducers([FromServices] ListProducers listProducers)
         {
             return Json(listProducers.Do());
+        }
+
+        [HttpPut]
+        public async Task<IActionResult> UpdateProducer([FromServices] UpdateProducer updateProducer, [FromBody] UpdateProducerRequest request)
+        {
+            bool success = await updateProducer.Do(request) > 0;
+            
+            if (success)
+            {
+                return Ok();
+            }
+
+            return BadRequest();
         }
     }
 }

@@ -1,12 +1,6 @@
-using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
-using System.Security.Cryptography;
 using Shop.Application.Producer.ViewModels;
-using Shop.Application.Products;
-using Shop.Application.Products.ViewModels;
 using Shop.Database.Repositories;
-using Shop.Domain.Models;
 
 namespace Shop.Application.Producer
 {
@@ -22,17 +16,7 @@ namespace Shop.Application.Producer
 
         public IEnumerable<ProducerViewModel> Do()
         {
-            return _producerRepository.GetProducers(selector: p => new ProducerViewModel
-            {
-                Id = p.Id,
-                Name = p.Name,
-                Description = p.Description,
-                Country = p.Country,
-                Products = p.Products.Select(product => new ProductViewModel
-                {
-                    Id = product.Id
-                }).ToList(),
-            });
+            return _producerRepository.GetProducers(selector: GetProducer.ProducerMapper);
         }
     }
 }

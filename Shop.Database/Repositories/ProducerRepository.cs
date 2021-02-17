@@ -2,8 +2,10 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
+using System.Reflection;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
+using Shop.Database.Extensions;
 using Shop.Domain.Models;
 
 namespace Shop.Database.Repositories
@@ -35,6 +37,31 @@ namespace Shop.Database.Repositories
         {
             _context.Producers.Update(producer);
 
+            return _context.SaveChangesAsync();
+        }
+
+        /// <summary>
+        /// Update only fields that are not NULL
+        /// </summary>
+        /// <param name="producer">Entity to be updated</param>
+        /// <returns>Id</returns>
+        public Task<int> UpdateProducerPartial(Producer producer)
+        {
+            // _context.Producers.Attach(producer);
+            //
+            // foreach (PropertyInfo propertyInfo in typeof(Producer).GetProperties())
+            // {
+            //     object value = propertyInfo.GetValue(producer, null);
+            //     if (value != null && propertyInfo.Name != "Id")
+            //     {
+            //         _context.Entry(producer).Property(propertyInfo.Name).IsModified = true;
+            //     }
+            // }
+
+            //_context.Producers.Update(producer);
+            
+            _context.PartialUpdate(producer);
+            
             return _context.SaveChangesAsync();
         }
 

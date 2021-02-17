@@ -11,10 +11,20 @@
 				{
 					"name": "DeleteProducer",
 					"request": {
-						"method": "GET",
+						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": ""
+							"raw": "https://localhost:5001/api/Producer/1",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"Producer",
+								"1"
+							]
 						}
 					},
 					"response": []
@@ -25,7 +35,17 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": ""
+							"raw": "https://localhost:5001/api/Producer/1",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"Producer",
+								"1"
+							]
 						}
 					},
 					"response": []
@@ -33,9 +53,29 @@
 				{
 					"name": "CreateProducer",
 					"request": {
-						"method": "GET",
+						"method": "POST",
 						"header": [],
-						"url": null
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"Country\": \"CZ\",\n    \"Description\": \"Test description\",\n    \"Name\": \"POLAK SRO\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:5001/api/Producer",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"Producer"
+							]
+						}
 					},
 					"response": []
 				},
@@ -45,7 +85,17 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": ""
+							"raw": "https://localhost:5001/api/Producer/list",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"Producer",
+								"list"
+							]
 						}
 					},
 					"response": []
@@ -53,10 +103,28 @@
 				{
 					"name": "UpdateProducer",
 					"request": {
-						"method": "GET",
+						"method": "PUT",
 						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"Id\": 1,\n    \"Name\": \"new name49\",\n    \"Description\": \"partial update check\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
 						"url": {
-							"raw": ""
+							"raw": "https://localhost:5001/api/Producer",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"Producer"
+							]
 						}
 					},
 					"response": []

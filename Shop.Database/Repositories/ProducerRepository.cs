@@ -47,19 +47,6 @@ namespace Shop.Database.Repositories
         /// <returns>Id</returns>
         public Task<int> UpdateProducerPartial(Producer producer)
         {
-            // _context.Producers.Attach(producer);
-            //
-            // foreach (PropertyInfo propertyInfo in typeof(Producer).GetProperties())
-            // {
-            //     object value = propertyInfo.GetValue(producer, null);
-            //     if (value != null && propertyInfo.Name != "Id")
-            //     {
-            //         _context.Entry(producer).Property(propertyInfo.Name).IsModified = true;
-            //     }
-            // }
-
-            //_context.Producers.Update(producer);
-            
             _context.PartialUpdate(producer);
             
             return _context.SaveChangesAsync();

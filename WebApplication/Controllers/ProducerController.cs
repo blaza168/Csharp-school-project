@@ -26,6 +26,13 @@ namespace WebApplication.Controllers
             return Json(listProducers.Do());
         }
 
+        
+        /// <summary>
+        /// Endpoint for partial producer update
+        /// </summary>
+        /// <param name="updateProducer"></param>
+        /// <param name="request"></param>
+        /// <returns></returns>
         [HttpPut]
         public async Task<IActionResult> UpdateProducer([FromServices] UpdateProducer updateProducer, [FromBody] UpdateProducerRequest request)
         {

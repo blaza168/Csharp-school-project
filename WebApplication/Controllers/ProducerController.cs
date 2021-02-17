@@ -26,6 +26,24 @@ namespace WebApplication.Controllers
             return Json(listProducers.Do());
         }
 
+        [HttpGet("{producerId}")]
+        public IActionResult GetProducer([FromServices] GetProducer getProducer, int producerId)
+        {
+            return Json(getProducer.Do(producerId));
+        }
+
+        [HttpDelete("{producerId}")]
+        public async Task<IActionResult> DeleteProducer([FromServices] DeleteProducer deleteProducer, int producerId)
+        {
+            bool success = await deleteProducer.Do(producerId) > 0;
+            
+            if (success)
+            {
+                return Ok();
+            }
+
+            return BadRequest();
+        }
         
         /// <summary>
         /// Endpoint for partial producer update

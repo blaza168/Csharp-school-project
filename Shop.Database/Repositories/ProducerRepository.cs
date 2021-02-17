@@ -57,7 +57,7 @@ namespace Shop.Database.Repositories
             Producer producer = _context.Producers.FirstOrDefault(x => x.Id == id);
 
             if (producer == null)
-                return null;
+                return Task.FromResult(0);
 
             _context.Producers.Remove(producer);
 

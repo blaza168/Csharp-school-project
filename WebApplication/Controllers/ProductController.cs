@@ -2,7 +2,6 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Shop.Application.Products;
 using Shop.Application.Products.Requests;
-using WebApplication.Commands.Products;
 
 namespace WebApplication.Controllers
 {
@@ -10,7 +9,7 @@ namespace WebApplication.Controllers
     public class ProductController : Controller
     {
         [HttpGet("{productId}")]
-        public IActionResult Index(int productId, [FromServices] GetProduct getProduct)
+        public IActionResult GetProduct([FromServices] GetProduct getProduct, int productId)
         {
             return Json(getProduct.Do(productId));
         }
@@ -30,6 +29,29 @@ namespace WebApplication.Controllers
                 return Ok();
             }
             
+            return BadRequest();
+        }
+
+        [HttpPut]
+        public async Task<IActionResult> UpdateProduct([FromServices] UpdateProduct updateProduct,
+            UpdateProductRequest updateProductRequest)
+        {
+            if (await updateProduct.Do(updateProductRequest) > 0)
+            {
+                return Ok();
+            }
+
+            return BadRequest();
+        }
+
+        [HttpDelete("{productId}")]
+        public async Task<IActionResult> DeleteProduct([FromServices] DeleteProduct deleteProduct, int productId)
+        {
+            if (await deleteProduct.Do(productId) > 0)
+            {
+                return Ok();
+            }
+
             return BadRequest();
         }
     }

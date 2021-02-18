@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
+using Shop.Database.Extensions;
 using Shop.Domain.Models;
 
 namespace Shop.Database.Repositories
@@ -55,6 +56,13 @@ namespace Shop.Database.Repositories
                 .Where(x => condition(x))
                 .Select(selector)
                 .ToList();
+        }
+
+        public Task<int> UpdateProductPartial(Product product)
+        {
+            _context.PartialUpdate(product);
+
+            return _context.SaveChangesAsync();
         }
         
         public TResult GetProductById<TResult>(int id, Expression<Func<Product, TResult>> selector)

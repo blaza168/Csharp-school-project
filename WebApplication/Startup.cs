@@ -27,8 +27,10 @@ namespace WebApplication
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddRazorPages();
+            services.AddSwaggerGen();
             services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(Configuration["SqlConnection"]));
 
+            services.AddControllers();
             services.AddApplicationServices();
         }
 
@@ -38,6 +40,12 @@ namespace WebApplication
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
+                app.UseSwagger();
+                app.UseSwaggerUI(c =>
+                {
+                    c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");
+                    c.RoutePrefix = string.Empty;           //s dovolenim jsem to hodil na root
+                });
             }
             else
             {

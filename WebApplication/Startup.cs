@@ -44,7 +44,7 @@ namespace WebApplication
                 app.UseSwaggerUI(c =>
                 {
                     c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");
-                    c.RoutePrefix = string.Empty;           //s dovolenim jsem to hodil na root
+                    c.RoutePrefix = string.Empty;           //move Swagger to root
                 });
             }
             else

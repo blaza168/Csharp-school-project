@@ -4,6 +4,7 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
+using Shop.Database.Extensions;
 using Shop.Database.Repositories.QueryObjects;
 using Shop.Domain.Models;
 
@@ -67,6 +68,13 @@ namespace Shop.Database.Repositories
                 return Task.FromResult(0);
 
             _context.Ratings.Remove(rating);
+
+            return _context.SaveChangesAsync();
+        }
+
+        public Task<int> UpdateRatingPartial(Rating rating)
+        {
+            _context.PartialUpdate(rating);
 
             return _context.SaveChangesAsync();
         }

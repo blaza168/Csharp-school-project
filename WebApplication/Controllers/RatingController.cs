@@ -50,5 +50,18 @@ namespace WebApplication.Controllers
 
             return BadRequest();
         }
+
+        [HttpPut]
+        public async Task<IActionResult> UpdateRating([FromServices] UpdateRating updateRating, [FromBody] UpdateRatingRequest request)
+        {
+            bool success = await updateRating.Do(request) > 0;
+
+            if (success)
+            {
+                return Ok();
+            }
+
+            return BadRequest();
+        }
     }
 }

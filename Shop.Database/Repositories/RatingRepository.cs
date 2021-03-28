@@ -2,6 +2,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
+using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 using Shop.Database.Repositories.QueryObjects;
 using Shop.Domain.Models;
 
@@ -32,6 +34,29 @@ namespace Shop.Database.Repositories
                 .Where(g => g.AverageRating >= minRating && g.AverageRating <= maxRating)
                 .Select(selector)
                 .ToList();
+        }
+
+        public TResult GetRatingById<TResult>(int id, Expression<Func<Rating, TResult>> selector)
+        {
+            return _context.Ratings
+                .Where(x => x.Id == id)
+                //.Include(x => x.File)
+                .Select(selector)
+                .FirstOrDefault();
+        }
+
+        public IEnumerable<TResult> GetRatings<TResult>(Expression<Func<Rating, TResult>> selector)
+        {
+            return _context.Ratings
+                .Select(selector)
+                .ToList();
+        }
+
+        public Task<int> CreateRating(Rating rating)
+        {
+            _context.Ratings.Add(rating);
+
+            return _context.SaveChangesAsync();
         }
     }
 }

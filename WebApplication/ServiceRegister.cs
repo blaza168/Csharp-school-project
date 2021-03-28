@@ -25,6 +25,7 @@ namespace WebApplication
             @this.AddTransient<RatingRepository>();
             @this.AddTransient<FileRepository>();
             @this.AddTransient<ProducerRepository>();
+            @this.AddTransient<CategoryRepository>();
 
             return @this;
         }

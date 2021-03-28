@@ -32,6 +32,12 @@ namespace WebApplication.Controllers
             return Json(getRating.Do(ratingId));
         }
 
+        [HttpGet("ForProduct/{productId}")]
+        public IActionResult GetRatingsForProduct([FromServices] GetRatingsForProduct getRatingsForProduct, int productId)
+        {
+            return Json(getRatingsForProduct.Do(productId));
+        }
+
         [HttpDelete("{ratingId}")]
         public async Task<IActionResult> DeleteRating([FromServices] DeleteRating deleteRating, int ratingId)
         {

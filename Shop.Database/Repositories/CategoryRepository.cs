@@ -1,4 +1,5 @@
-﻿using Shop.Domain.Models;
+﻿using Microsoft.EntityFrameworkCore;
+using Shop.Domain.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -27,6 +28,14 @@ namespace Shop.Database.Repositories
             _context.Categories.Add(category);
 
             return _context.SaveChangesAsync();
+        }
+
+        public TResult GetCategoryById<TResult>(int id, Expression<Func<Category, TResult>> selector)
+        {
+            return _context.Categories
+                .Where(x => x.Id == id)
+                .Select(selector)
+                .FirstOrDefault();
         }
     }
 }

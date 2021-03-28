@@ -42,7 +42,7 @@ namespace Shop.Database
                 .OnDelete(DeleteBehavior.SetNull);
 
             modelBuilder.Entity<Product>().HasOne(p => p.Category)
-                .WithMany(c => c.Producets)
+                .WithMany(c => c.Producers)
                 .HasForeignKey(p => p.CategoryId)
                 .OnDelete(DeleteBehavior.Cascade);
             

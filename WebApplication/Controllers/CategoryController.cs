@@ -19,11 +19,16 @@ namespace WebApplication.Controllers
             return BadRequest();
         }
 
-
-        [HttpGet("list")]
+        /*[HttpGet("list")]
         public IActionResult List([FromServices] ListCategories listCategories)
         {
             return Json(listCategories.Do());
+        }*/
+
+        [HttpGet("{categoryId}")]
+        public IActionResult GetCategory([FromServices] GetCategory getCategory, int categoryId)
+        {
+            return Json(getCategory.Do(categoryId));
         }
     }
 }

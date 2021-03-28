@@ -37,5 +37,17 @@ namespace Shop.Database.Repositories
                 .Select(selector)
                 .FirstOrDefault();
         }
+
+        public Task<int> DeleteCategory(int id)
+        {
+            Category category = _context.Categories.FirstOrDefault(x => x.Id == id);
+
+            if (category == null)
+                return Task.FromResult(0);
+
+            _context.Categories.Remove(category);
+
+            return _context.SaveChangesAsync();
+        }
     }
 }

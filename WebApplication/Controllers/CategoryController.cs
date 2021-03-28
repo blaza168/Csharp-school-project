@@ -30,5 +30,18 @@ namespace WebApplication.Controllers
         {
             return Json(getCategory.Do(categoryId));
         }
+
+        [HttpDelete("{categoryId}")]
+        public async Task<IActionResult> DeleteCategory([FromServices] DeleteCategory deleteCategory, int categoryId)
+        {
+            bool success = await deleteCategory.Do(categoryId) > 0;
+
+            if (success)
+            {
+                return Ok();
+            }
+
+            return BadRequest();
+        }
     }
 }

@@ -27,6 +27,7 @@ namespace Shop.Application.Products
                 Weight = request.Weight,
                 Qty = request.Qty,
                 ProducerId = request.ProducerId,
+                CategoryId = request.CategoryId,
                 FileId = request.FileId,
             });
         }

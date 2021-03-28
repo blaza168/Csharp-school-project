@@ -22,6 +22,7 @@ namespace Shop.Application.Producer
                 Name = request.Name,
                 Description = request.Description,
                 Country = request.Country,
+                //FileId = request.FileId           //TODO: temporary workaround to prevent SQL from complaining about foreign key when we have no files
             });
         }
     }

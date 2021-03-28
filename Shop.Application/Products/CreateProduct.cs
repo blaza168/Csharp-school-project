@@ -28,7 +28,7 @@ namespace Shop.Application.Products
                 Qty = request.Qty,
                 ProducerId = request.ProducerId,
                 CategoryId = request.CategoryId,
-                FileId = request.FileId,
+                //FileId = request.FileId,          //TODO: temporary workaround to prevent SQL from complaining about foreign key when we have no files
             });
         }
     }

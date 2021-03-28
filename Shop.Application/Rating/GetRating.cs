@@ -8,7 +8,7 @@ using Shop.Database.Repositories;
 namespace Shop.Application.Rating
 {
     [Service]
-    class GetRating
+    public class GetRating
     {
         public static readonly Expression<Func<Domain.Models.Rating, RatingViewModel>> RatingMapper = p =>
             new RatingViewModel
@@ -19,25 +19,6 @@ namespace Shop.Application.Rating
                 ProductId = p.ProductId,
                 Product = p.Product,
             };
-                
-                
-                /*public int Id { get; set; }
-                public decimal NumericRating { get; set; }
-                public string Description { get; set; }
-
-                public int ProductId { get; set; }
-                public Product Product { get; set; }*/
-
-
-        /*Id = p.Id,
-        Name = p.Name,
-        Description = p.Description,
-        Country = p.Country,
-        Products = p.Products.Select(product => new ProductViewModel
-        {
-            Id = product.Id,
-            Name = p.Name,
-        }).ToList(),*/
 
         private readonly RatingRepository _ratingRepository;
         
@@ -50,12 +31,5 @@ namespace Shop.Application.Rating
         {
             return _ratingRepository.GetRatingById(ratingId, RatingMapper);
         }
-        
-        
-        
-        /*public ProducerViewModel Do(int producerId)
-        {
-            return _producerRepository.GetProducerById(producerId, ProducerMapper);
-        }*/
     }
 }

@@ -25,5 +25,11 @@ namespace WebApplication.Controllers
         {
             return Json(listRatings.Do());
         }
+
+        [HttpGet("{ratingId}")]
+        public IActionResult GetRating([FromServices] GetRating getRating, int ratingId)
+        {
+            return Json(getRating.Do(ratingId));
+        }
     }
 }

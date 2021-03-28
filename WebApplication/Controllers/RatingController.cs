@@ -31,5 +31,18 @@ namespace WebApplication.Controllers
         {
             return Json(getRating.Do(ratingId));
         }
+
+        [HttpDelete("{ratingId}")]
+        public async Task<IActionResult> DeleteRating([FromServices] DeleteRating deleteRating, int ratingId)
+        {
+            bool success = await deleteRating.Do(ratingId) > 0;
+
+            if (success)
+            {
+                return Ok();
+            }
+
+            return BadRequest();
+        }
     }
 }

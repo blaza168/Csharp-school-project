@@ -58,5 +58,17 @@ namespace Shop.Database.Repositories
 
             return _context.SaveChangesAsync();
         }
+
+        public Task<int> DeleteRating(int id)
+        {
+            Rating rating = _context.Ratings.FirstOrDefault(x => x.Id == id);
+
+            if (rating == null)
+                return Task.FromResult(0);
+
+            _context.Ratings.Remove(rating);
+
+            return _context.SaveChangesAsync();
+        }
     }
 }

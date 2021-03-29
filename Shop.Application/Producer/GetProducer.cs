@@ -10,7 +10,7 @@ namespace Shop.Application.Producer
     [Service]
     public class GetProducer
     {
-        public static readonly Expression<Func<Domain.Models.Producer, ProducerViewModel>> ProducerMapper = p =>
+        private static readonly Expression<Func<Domain.Models.Producer, ProducerViewModel>> ProducerMapper = p =>
             new ProducerViewModel
             {
                 Id = p.Id,

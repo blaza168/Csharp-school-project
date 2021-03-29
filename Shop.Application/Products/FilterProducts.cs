@@ -12,10 +12,11 @@ namespace Shop.Application.Products
     [Service]
     public class FilterProducts
     {
-        private static readonly Expression<Func<Product, ProductViewModel>> ModelMapper = p =>
+        public static readonly Expression<Func<Product, ProductViewModel>> ModelMapper = p =>
             new ProductViewModel
             {
                 Id = p.Id,
+                Name = p.Name,
                 Price = $"$ {p.Price:N2}",
                 Description = p.Description,
                 Weight = p.Weight

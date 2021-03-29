@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
+using NinjaNye.SearchExtensions;
 using Shop.Database.Extensions;
 using Shop.Domain.Models;
 
@@ -54,6 +55,15 @@ namespace Shop.Database.Repositories
         {
             return _context.Products
                 .Where(x => condition(x))
+                .Select(selector)
+                .ToList();
+        }
+        
+        public IEnumerable<TResult> FilterProductsByText<TResult>(Expression<Func<Product, TResult>> selector, string text)
+        {
+            return _context.Products
+                .Search(p => p.Name, p => p.Description)
+                .Containing(text)
                 .Select(selector)
                 .ToList();
         }

@@ -5,6 +5,7 @@ using System.Linq.Expressions;
 using System.Reflection;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
+using NinjaNye.SearchExtensions;
 using Shop.Database.Extensions;
 using Shop.Domain.Models;
 
@@ -81,6 +82,5 @@ namespace Shop.Database.Repositories
                 .Select(selector)
                 .ToList();
         }
-
     }
 }

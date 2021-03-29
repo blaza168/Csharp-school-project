@@ -52,6 +52,14 @@ namespace Shop.Database.Repositories
                 .Select(selector)
                 .ToList();
         }
+        
+        public IEnumerable<TResult> GetRatings<TResult>(Expression<Func<Rating, bool>> condition, Expression<Func<Rating, TResult>> selector)
+        {
+            return _context.Ratings
+                .Where(condition)
+                .Select(selector)
+                .ToList();
+        }
 
         public Task<int> CreateRating(Rating rating)
         {
